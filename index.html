@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho Final</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark">
+    <div class="text-center font-weight text-dark bg-light p-2 mb-4">
+        <h1>Trabalho Final - Anderson • Larissa</h1>
+    </div>
+    <div class="container">
+        <form class="formulario text-light">
+            <div class="form-group">
+                <label class="ml-2">CÓDIGO</label>
+                <input type="number" id="codigo" class="form-control" placeholder="Digite seu código">
+            </div>
+            <div class="form-group ">
+                <label class="ml-2">NOME</label>
+                <input type="text" id="nome" class="form-control" placeholder="Digite seu nome">
+            </div>
+            <div class="form-group ">
+                <label class="ml-2">CEP</label>
+                <input type="number" id="cep" class="form-control" placeholder="Digite sua rua">
+            </div>
+            <div class="form-group ">
+                <label class="ml-2">RUA</label>
+                <input type="text" id="rua" class="form-control" placeholder="Digite seu CEP">
+            </div>
+            <div class="form-group ">
+                <label class="ml-2">NÚMERO</label>
+                <input type="number" id="numero" class="form-control" placeholder="Digite seu número">
+            </div>
+            <div class="form-group ">
+                <label class="ml-2">BAIRRO</label>
+                <input type="number" id="bairro" class="form-control" placeholder="Digite seu bairro">
+            </div>
+            <div class="form-group ">
+                <label class="ml-2">CIDADE</label>
+                <input type="number" id="cidade" class="form-control" placeholder="Digite sua cidade">
+            </div>    
+        </form>
+
+    <div class="row">
+        <table class="table table-dark table-striped shadow rounded" id="tResultado">
+
+            <thead class="text-dark bg-light">
+                <tr>
+                    <th scope="col">CÓDIGO</th>
+                    <th scope="col">NOME</th>
+                    <th scope="col">AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody id="tDados">
+
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>
