@@ -14,49 +14,55 @@
     </div>
     <div class="container">
         <form class="formulario text-light">
-            <div class="form-group">
-                <label class="ml-2">CÓDIGO</label>
-                <input type="text" id="codigo" class="form-control" placeholder="Digite seu código">
-                <p id="codigoValida"></p>
+            <div class="form-row">
+                <div class="col-2">
+                    <label class="ml-2">CÓDIGO</label>
+                    <input type="text" id="codigo" class="form-control" placeholder="Digite seu código">
+                    <p id="codigoValida"></p>
+                </div>
+                <div class="col">
+                    <label class="ml-2">NOME</label>
+                    <input type="text" id="nome" class="form-control" placeholder="Digite seu nome">
+                    <p id="nomeValida"></p>
+                </div>
             </div>
-            <div class="form-group ">
-                <label class="ml-2">NOME</label>
-                <input type="text" id="nome" class="form-control" placeholder="Digite seu nome">
-                <p id="nomeValida"></p>
+            <div class="form-row">
+                <div class="col-2">
+                    <label class="ml-2">CEP</label>
+                    <input type="text" id="cep" class="form-control" placeholder="Digite sua rua">
+                    <p id="cepValida"></p>
+                </div>
+                <div class="col">
+                    <label class="ml-2">RUA</label>
+                    <input type="text" id="rua" class="form-control" placeholder="Digite seu CEP">
+                    <p id="ruaValida"></p>
+                </div>
+                <div class="col-2">
+                    <label class="ml-2">NÚMERO</label>
+                    <input type="text" id="numero" class="form-control" placeholder="Digite seu número">
+                    <p id="numeroValida"></p>
+                </div>
             </div>
-            <div class="form-group ">
-                <label class="ml-2">CEP</label>
-                <input type="text" id="cep" class="form-control" placeholder="Digite sua rua">
-                <p id="cepValida"></p>
+            <div class="form-row">
+                <div class="col">
+                    <label class="ml-2">BAIRRO</label>
+                    <input type="text" id="bairro" class="form-control" placeholder="Digite seu bairro">
+                    <p id="bairroValida"></p>
+                </div>
+                <div class="col">
+                    <label class="ml-2">CIDADE</label>
+                    <input type="text" id="cidade" class="form-control" placeholder="Digite sua cidade">
+                    <p id="cidadeValida"></p>
+                </div>
             </div>
-            <div class="form-group ">
-                <label class="ml-2">RUA</label>
-                <input type="text" id="rua" class="form-control" placeholder="Digite seu CEP">
-                <p id="ruaValida"></p>
-            </div>
-            <div class="form-group ">
-                <label class="ml-2">NÚMERO</label>
-                <input type="text" id="numero" class="form-control" placeholder="Digite seu número">
-                <p id="numeroValida"></p>
-            </div>
-            <div class="form-group ">
-                <label class="ml-2">BAIRRO</label>
-                <input type="text" id="bairro" class="form-control" placeholder="Digite seu bairro">
-                <p id="bairroValida"></p>
-            </div>
-            <div class="form-group ">
-                <label class="ml-2">CIDADE</label>
-                <input type="text" id="cidade" class="form-control" placeholder="Digite sua cidade">
-                <p id="cidadeValida"></p>
-            </div>  
             <div>
-            <button type="button" id="btnEnviar" class="btn btn-outline-light">ENVIAR</button>
-            <input type="hidden" id="acao" value="enviar" /> 
+                <button type="button" id="btnEnviar" class="btn btn-outline-light">ENVIAR</button>
+                <input type="hidden" id="acao" value="enviar" /> 
             </div>
         </form>
 
     <div class="row">
-        <table class="table table-dark table-striped" id="">
+        <table class="table table-dark table-striped text-center" id="">
 
             <thead class="text-dark bg-light">
                 <tr>
