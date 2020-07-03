@@ -1,4 +1,4 @@
-// const AddInputBlurEvent = () => {};
+const AddInputBlurEvent = () => {};
 
 const FormValidate = () => {
   let error = false;
@@ -60,7 +60,7 @@ const FormValidate = () => {
   }
 };
 
-salvar.addEventListener("click", () => {
+btnEnviar.addEventListener("click", () => {
   if (!FormValidate()) {
     console.log("Validado!");
   }
