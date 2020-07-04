@@ -87,11 +87,11 @@ const LoadCepData = (cep) => {
   fetch(`viacep.com.br/ws/${cep}/json/`, myInit)
     .then((response) => response.json())
     .then((json) => {
-      let dadosCep = json;
+      //   let dadosCep = json;
       console.log(dadosCep);
-      rua.value = dadosCep.logradouro;
-      bairro.value = dadosCep.bairro;
-      cidade.value = dadosCep.localidade;
+      //   rua.value = dadosCep.logradouro;
+      //   bairro.value = dadosCep.bairro;
+      //   cidade.value = dadosCep.localidade;
     });
 };
 
@@ -113,3 +113,13 @@ btnEnviar.addEventListener("click", () => {
 });
 
 AddInputFocusEvent();
+
+$("input:empty, textarea:empty").closest("label").addClass("empty");
+
+$("input").keyup(function () {
+  if ($(this).val().trim() !== "") {
+    $(this).closest("label").removeClass("empty");
+  } else {
+    $(this).closest("label").addClass("empty");
+  }
+});
