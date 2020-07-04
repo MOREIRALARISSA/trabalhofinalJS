@@ -29,12 +29,12 @@
             <div class="form-row">
                 <div class="col-2">
                     <label class="ml-2">CEP</label>
-                    <input type="text" id="cep" class="form-control" placeholder="Digite sua rua">
+                    <input type="text" id="cep" class="form-control" placeholder="Digite seu CEP" maxlength="9">
                     <p id="cepValida"></p>
                 </div>
                 <div class="col">
                     <label class="ml-2">RUA</label>
-                    <input type="text" id="rua" class="form-control" placeholder="Digite seu CEP">
+                    <input type="text" id="rua" class="form-control" placeholder="Digite sua rua">
                     <p id="ruaValida"></p>
                 </div>
                 <div class="col-2">
@@ -55,33 +55,34 @@
                     <p id="cidadeValida"></p>
                 </div>
             </div>
-            <div>
-                <button type="button" id="btnEnviar" class="btn btn-outline-light">ENVIAR</button>
-                <input type="hidden" id="acao" value="enviar" /> 
-            </div>
+                <div class="row justify-content-right">
+                    <div class="col-4">
+                    <button type="button" id="btnEnviar" class="btn btn-outline-light mb-2">ENVIAR</button>
+                    <input type="hidden" id="acao" value="enviar" /> 
+                    </div>
+                </div>
         </form>
 
-    <div class="row">
-        <table class="table table-dark table-striped text-center" id="">
+        <div class="row">
+            <table class="table table-dark table-striped text-center" id="">
 
-            <thead class="text-dark bg-light">
-                <tr>
-                    <th scope="col">CÓDIGO</th>
-                    <th scope="col">NOME</th>
-                    <th scope="col">AÇÃO</th>
-                </tr>
-            </thead>
-            <tbody id="tDados">
+                <thead class="text-dark bg-light">
+                    <tr>
+                        <th scope="col">CÓDIGO</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">AÇÃO</th>
+                    </tr>
+                </thead>
+                <tbody id="tDados">
 
-            </tbody>
-            <tfoot>
-            </tfoot>
-        </table>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
     </div>
-    </div>
 
-    <script src="script.js"></script>
-
+<script src="script.js"></script>
 
 </body>
 </html>
