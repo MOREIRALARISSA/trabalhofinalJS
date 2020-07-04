@@ -75,9 +75,32 @@ const FormValidate = () => {
   }
 };
 
+const LoadCepData = (cep) => {
+  fetch(`viacep.com.br/ws/${cep}/json/`)
+    .then((response) => response.json())
+    .then((json) => {
+      let dadosCep = json;
+      rua.value = dadosCep.logradouro;
+      bairro.value = dadosCep.bairro;
+      cidade.value = dadosCep.localidade;
+    });
+};
+
+cep.addEventListener("keyup", (event) => {
+  if (cep.value.length === 5) {
+    let b = cep.value.padEnd(6, "-");
+    cep.value = b;
+  }
+  if (cep.value.length === 9) {
+    let newCep = cep.value.replace("-", "");
+
+    LoadCepData(newCep);
+  }
+});
+
 btnEnviar.addEventListener("click", () => {
+  clickCount++;
   if (FormValidate()) {
-    console.log("Validado!");
   }
 });
 
