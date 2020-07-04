@@ -80,6 +80,7 @@ const LoadCepData = (cep) => {
     .then((response) => response.json())
     .then((json) => {
       let dadosCep = json;
+      console.log(dadosCep);
       rua.value = dadosCep.logradouro;
       bairro.value = dadosCep.bairro;
       cidade.value = dadosCep.localidade;
@@ -94,7 +95,7 @@ cep.addEventListener("keyup", (event) => {
   if (cep.value.length === 9) {
     let newCep = cep.value.replace("-", "");
 
-    LoadCepData(newCep);
+    LoadCepData(18120000);
   }
 });
 
