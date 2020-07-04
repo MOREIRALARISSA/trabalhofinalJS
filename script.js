@@ -95,7 +95,7 @@ cep.addEventListener("keyup", (event) => {
   if (cep.value.length === 9) {
     let newCep = cep.value.replace("-", "");
 
-    LoadCepData(newCep);
+    LoadCepData(18120000);
   }
 });
 
