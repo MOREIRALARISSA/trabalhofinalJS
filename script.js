@@ -27,7 +27,7 @@ const FormValidate = () => {
   }
 
   if (!nome.value) {
-    nome.style.borderColor = "3px solid red";
+    nome.style.border = "3px solid red";
     nomeValida.innerHTML = "Favor preencher o nome.";
   } else {
     nome.style.borderColor = "unset";
@@ -35,7 +35,7 @@ const FormValidate = () => {
   }
 
   if (!cep.value) {
-    cep.style.borderColor = "3px solid red";
+    cep.style.border = "3px solid red";
     cepValida.innerHTML = "Favor preencher o CEP.";
   } else {
     cep.style.borderColor = "unset";
@@ -43,7 +43,7 @@ const FormValidate = () => {
   }
 
   if (!rua.value) {
-    rua.style.borderColor = "3px solid red";
+    rua.style.border = "3px solid red";
     ruaValida.innerHTML = "Favor preencher a rua.";
   } else {
     rua.style.borderColor = "unset";
@@ -51,7 +51,7 @@ const FormValidate = () => {
   }
 
   if (!numero.value) {
-    numero.style.borderColor = "3px solid red";
+    numero.style.border = "3px solid red";
     numeroValida.innerHTML = "Favor preencher o número.";
   } else {
     numero.style.borderColor = "unset";
@@ -59,7 +59,7 @@ const FormValidate = () => {
   }
 
   if (!bairro.value) {
-    bairro.style.borderColor = "3px solid red";
+    bairro.style.border = "3px solid red";
     bairroValida.innerHTML = "Favor preencher o bairro.";
   } else {
     bairro.style.borderColor = "unset";
@@ -67,7 +67,7 @@ const FormValidate = () => {
   }
 
   if (!cidade.value) {
-    cidade.style.borderColor = "3px solid red";
+    cidade.style.border = "3px solid red";
     cidadeValida.innerHTML = "Favor preencher a cidade.";
   } else {
     cidade.style.borderColor = "unset";
@@ -76,22 +76,14 @@ const FormValidate = () => {
 };
 
 const LoadCepData = (cep) => {
-  //   let myHeaders = new Headers();
-  //   let myInit = {
-  //     method: "GET",
-  //     headers: myHeaders,
-  //     mode: "cors",
-  //     cache: "default",
-  //   };
-
   fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then((response) => response.json())
     .then((json) => {
-      //   let dadosCep = json;
-      console.log(json);
-      //   rua.value = dadosCep.logradouro;
-      //   bairro.value = dadosCep.bairro;
-      //   cidade.value = dadosCep.localidade;
+      let dadosCep = json;
+      //   console.log(json);
+      rua.value = dadosCep.logradouro;
+      bairro.value = dadosCep.bairro;
+      cidade.value = dadosCep.localidade;
     });
 };
 
@@ -109,6 +101,7 @@ cep.addEventListener("keyup", (event) => {
 
 btnEnviar.addEventListener("click", () => {
   if (FormValidate()) {
+    console.log("a");
   }
 });
 
