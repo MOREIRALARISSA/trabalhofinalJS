@@ -20,7 +20,7 @@ const FormValidate = () => {
 
   if (codigo.value === "") {
     codigo.style.border = "3px solid red";
-    codigoValida.innerHTML = "Favor preencher o nome.";
+    // codigoValida.innerHTML = "Favor preencher o nome.";
   } else {
     codigo.style.borderColor = "unset";
     error = true;
@@ -28,7 +28,7 @@ const FormValidate = () => {
 
   if (nome.value === "") {
     nome.style.border = "3px solid red";
-    nomeValida.innerHTML = "Favor preencher o nome.";
+    // nomeValida.innerHTML = "Favor preencher o nome.";
   } else {
     nome.style.borderColor = "unset";
     error = true;
@@ -36,7 +36,7 @@ const FormValidate = () => {
 
   if (cep.value === "") {
     cep.style.border = "3px solid red";
-    cepValida.innerHTML = "Favor preencher o CEP.";
+    // cepValida.innerHTML = "Favor preencher o CEP.";
   } else {
     cep.style.borderColor = "unset";
     error = true;
@@ -44,7 +44,7 @@ const FormValidate = () => {
 
   if (rua.value === "") {
     rua.style.border = "3px solid red";
-    ruaValida.innerHTML = "Favor preencher a rua.";
+    // ruaValida.innerHTML = "Favor preencher a rua.";
   } else {
     rua.style.borderColor = "unset";
     error = true;
@@ -52,7 +52,7 @@ const FormValidate = () => {
 
   if (numero.value === "") {
     numero.style.border = "3px solid red";
-    numeroValida.innerHTML = "Favor preencher o número.";
+    // numeroValida.innerHTML = "Favor preencher o número.";
   } else {
     numero.style.borderColor = "unset";
     error = true;
@@ -60,7 +60,7 @@ const FormValidate = () => {
 
   if (bairro.value === "") {
     bairro.style.border = "3px solid red";
-    bairroValida.innerHTML = "Favor preencher o bairro.";
+    // bairroValida.innerHTML = "Favor preencher o bairro.";
   } else {
     bairro.style.borderColor = "unset";
     error = true;
@@ -68,7 +68,7 @@ const FormValidate = () => {
 
   if (cidade.value === "") {
     cidade.style.border = "3px solid red";
-    cidadeValida.innerHTML = "Favor preencher a cidade.";
+    // cidadeValida.innerHTML = "Favor preencher a cidade.";
   } else {
     cidade.style.borderColor = "unset";
     error = true;
@@ -77,7 +77,7 @@ const FormValidate = () => {
   return error;
 };
 
-const LoadCepData = (cep) => {
+const LoadCepViaCep = (cep) => {
   fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then((response) => response.json())
     .then((json) => {
@@ -91,6 +91,13 @@ const LoadCepData = (cep) => {
     });
 };
 
+const LoadCepLocalStorage = (cep) => {
+  let cepObject = JSON.parse(localStorage.getItem(cep));
+  rua.value = cepObject.logradouro;
+  bairro.value = cepObject.bairro;
+  cidade.value = cepObject.localidade;
+};
+
 cep.addEventListener("keyup", (event) => {
   if (cep.value.length === 5) {
     let b = cep.value.padEnd(6, "-");
@@ -100,10 +107,10 @@ cep.addEventListener("keyup", (event) => {
   if (cep.value.length === 9) {
     let newCep = cep.value.replace("-", "");
 
-    if (localStorage.hasOwnProperty("")) {
-      console.log("tem");
+    if (localStorage.hasOwnProperty(newCep)) {
+      LoadCepLocalStorage(newCep);
     } else {
-      LoadCepData(newCep);
+      LoadCepViaCep(newCep);
     }
   }
 });
