@@ -80,6 +80,7 @@ const LoadCepData = (cep) => {
     .then((response) => response.json())
     .then((json) => {
       let dadosCep = json;
+      console.log(dadosCep);
       rua.value = dadosCep.logradouro;
       bairro.value = dadosCep.bairro;
       cidade.value = dadosCep.localidade;
