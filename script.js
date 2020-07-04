@@ -108,7 +108,6 @@ cep.addEventListener("keyup", (event) => {
 });
 
 btnEnviar.addEventListener("click", () => {
-  clickCount++;
   if (FormValidate()) {
   }
 });
