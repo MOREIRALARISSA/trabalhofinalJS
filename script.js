@@ -18,7 +18,7 @@ const AddInputFocusEvent = () => {
 const FormValidate = () => {
   let error = false;
 
-  if (!codigo.value) {
+  if (codigo.value === "") {
     codigo.style.border = "3px solid red";
     // codigoValida.innerHTML = "Favor preencher o nome.";
   } else {
@@ -26,7 +26,7 @@ const FormValidate = () => {
     error = true;
   }
 
-  if (!nome.value) {
+  if (nome.value === "") {
     nome.style.border = "3px solid red";
     // nomeValida.innerHTML = "Favor preencher o nome.";
   } else {
@@ -34,7 +34,7 @@ const FormValidate = () => {
     error = true;
   }
 
-  if (!cep.value) {
+  if (cep.value === "") {
     cep.style.border = "3px solid red";
     // cepValida.innerHTML = "Favor preencher o CEP.";
   } else {
@@ -42,7 +42,7 @@ const FormValidate = () => {
     error = true;
   }
 
-  if (!rua.value) {
+  if (rua.value === "") {
     rua.style.border = "3px solid red";
     // ruaValida.innerHTML = "Favor preencher a rua.";
   } else {
@@ -50,7 +50,7 @@ const FormValidate = () => {
     error = true;
   }
 
-  if (!numero.value) {
+  if (numero.value === "") {
     numero.style.border = "3px solid red";
     // numeroValida.innerHTML = "Favor preencher o número.";
   } else {
@@ -58,7 +58,7 @@ const FormValidate = () => {
     error = true;
   }
 
-  if (!bairro.value) {
+  if (bairro.value === "") {
     bairro.style.border = "3px solid red";
     // bairroValida.innerHTML = "Favor preencher o bairro.";
   } else {
@@ -66,13 +66,15 @@ const FormValidate = () => {
     error = true;
   }
 
-  if (!cidade.value) {
+  if (cidade.value === "") {
     cidade.style.border = "3px solid red";
     // cidadeValida.innerHTML = "Favor preencher a cidade.";
   } else {
     cidade.style.borderColor = "unset";
     error = true;
   }
+
+  return error;
 };
 
 const LoadCepData = (cep) => {
@@ -100,7 +102,14 @@ cep.addEventListener("keyup", (event) => {
 });
 
 btnEnviar.addEventListener("click", () => {
+  console.log("clicou");
   if (FormValidate()) {
+    console.log("valido");
+    if (localStorage.hasOwnerProperty("")) {
+      console.log("tem");
+    } else {
+      console.log("não tem");
+    }
     console.log("a");
   }
 });
