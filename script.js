@@ -82,10 +82,12 @@ const LoadCepData = (cep) => {
     .then((response) => response.json())
     .then((json) => {
       let dadosCep = json;
-      //   console.log(json);
+
       rua.value = dadosCep.logradouro;
       bairro.value = dadosCep.bairro;
       cidade.value = dadosCep.localidade;
+
+      localStorage.setItem(cep, JSON.stringify(dadosCep));
     });
 };
 
@@ -94,10 +96,15 @@ cep.addEventListener("keyup", (event) => {
     let b = cep.value.padEnd(6, "-");
     cep.value = b;
   }
+
   if (cep.value.length === 9) {
     let newCep = cep.value.replace("-", "");
 
-    LoadCepData(newCep);
+    if (localStorage.hasOwnProperty("")) {
+      console.log("tem");
+    } else {
+      LoadCepData(newCep);
+    }
   }
 });
 
@@ -105,12 +112,6 @@ btnEnviar.addEventListener("click", () => {
   console.log("clicou");
   if (FormValidate()) {
     console.log("valido");
-    if (localStorage.hasOwnProperty("")) {
-      console.log("tem");
-    } else {
-      console.log("não tem");
-    }
-    console.log("a");
   }
 });
 
