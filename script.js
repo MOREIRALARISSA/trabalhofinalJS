@@ -76,7 +76,15 @@ const FormValidate = () => {
 };
 
 const LoadCepData = (cep) => {
-  fetch(`viacep.com.br/ws/${cep}/json/`)
+  let myHeaders = new Headers();
+  let myInit = {
+    method: "GET",
+    headers: myHeaders,
+    mode: "cors",
+    cache: "default",
+  };
+
+  fetch(`viacep.com.br/ws/${cep}/json/`, myInit)
     .then((response) => response.json())
     .then((json) => {
       let dadosCep = json;
@@ -95,12 +103,11 @@ cep.addEventListener("keyup", (event) => {
   if (cep.value.length === 9) {
     let newCep = cep.value.replace("-", "");
 
-    LoadCepData(18120000);
+    LoadCepData(newCep);
   }
 });
 
 btnEnviar.addEventListener("click", () => {
-  clickCount++;
   if (FormValidate()) {
   }
 });
