@@ -105,7 +105,7 @@ btnEnviar.addEventListener("click", () => {
   console.log("clicou");
   if (FormValidate()) {
     console.log("valido");
-    if (localStorage.hasOwnerProperty("")) {
+    if (localStorage.hasOwnProperty("")) {
       console.log("tem");
     } else {
       console.log("não tem");
