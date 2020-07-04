@@ -76,15 +76,15 @@ const FormValidate = () => {
 };
 
 const LoadCepData = (cep) => {
-  let myHeaders = new Headers();
-  let myInit = {
-    method: "GET",
-    headers: myHeaders,
-    mode: "cors",
-    cache: "default",
-  };
+  //   let myHeaders = new Headers();
+  //   let myInit = {
+  //     method: "GET",
+  //     headers: myHeaders,
+  //     mode: "cors",
+  //     cache: "default",
+  //   };
 
-  fetch(`viacep.com.br/ws/${cep}/json/`, myInit)
+  fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then((response) => response.json())
     .then((json) => {
       //   let dadosCep = json;
