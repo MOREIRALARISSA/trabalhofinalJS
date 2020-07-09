@@ -21,6 +21,9 @@ const FormValidate = () => {
   if (codigo.value === "") {
     codigo.style.border = "3px solid red";
     codigoValida.innerHTML = "Favor preencher o nome.";
+  } else if (localStorage.hasOwnProperty(newCep)) {
+    codigo.style.border = "3px solid yellow";
+    codigoValida.innerHTML = "Código já cadastrado";
   } else {
     codigo.style.borderColor = "unset";
     error = true;
