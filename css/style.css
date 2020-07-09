@@ -9,3 +9,17 @@
 */
 
 /*************************** GERAL ***************************/
+.action-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.session-1,
+.session-2 {
+  display: flex;
+}
+
+.session-1 p,
+.session-2 p {
+  margin-right: 10px;
+}

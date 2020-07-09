@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabalho Final</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -20,54 +21,53 @@
                 <div class="col-2">
                     <label class="ml-2">CÓDIGO</label>
                     <input type="text" id="codigo" class="form-control" placeholder="Digite seu código">
-                    <p id="codigoValida"></p> 
+                    <p id="codigoValida"></p>
                 </div>
                 <div class="col">
                     <label class="ml-2">NOME</label>
                     <input type="text" id="nome" class="form-control" placeholder="Digite seu nome">
-                <p id="nomeValida"></p> 
+                    <p id="nomeValida"></p>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-2">
                     <label class="ml-2">CEP</label>
                     <input type="text" id="cep" class="form-control" placeholder="Digite seu CEP" maxlength="9">
-                <p id="cepValida"></p>
+                    <p id="cepValida"></p>
                 </div>
                 <div class="col">
                     <label class="ml-2">RUA</label>
                     <input type="text" id="rua" class="form-control" placeholder="Digite sua rua">
-                <p id="ruaValida"></p>
+                    <p id="ruaValida"></p>
                 </div>
                 <div class="col-2">
                     <label class="ml-2">NÚMERO</label>
                     <input type="text" id="numero" class="form-control" placeholder="Digite seu número">
-                <p id="numeroValida"></p>
+                    <p id="numeroValida"></p>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <label class="ml-2">BAIRRO</label>
                     <input type="text" id="bairro" class="form-control" placeholder="Digite seu bairro">
-                <p id="bairroValida"></p>
+                    <p id="bairroValida"></p>
                 </div>
                 <div class="col">
                     <label class="ml-2">CIDADE</label>
                     <input type="text" id="cidade" class="form-control" placeholder="Digite sua cidade">
-                <p id="cidadeValida"></p>
+                    <p id="cidadeValida"></p>
                 </div>
             </div>
-                <div class="row justify-content-right">
-                    <div class="col-4">
-                    <button type="button" id="btnEnviar" class="btn btn-outline-light mb-2">ENVIAR</button>
-                    <input type="hidden" id="acao" value="enviar" /> 
-                    </div>
+            <div class="row justify-content-right">
+                <div class="col-4">
+                    <button type="button" id="btnEnviar" class="btn btn-outline-light mb-2">SALVAR</button>
+                    <input type="hidden" id="acao" value="enviar" />
                 </div>
+            </div>
         </form>
 
         <div class="row">
-            <table class="table table-dark table-striped text-center" id="">
-
+            <table class="table table-dark table-striped text-center">
                 <thead class="text-dark bg-light">
                     <tr>
                         <th scope="col">CÓDIGO</th>
@@ -75,16 +75,63 @@
                         <th scope="col">AÇÃO</th>
                     </tr>
                 </thead>
-                <tbody id="tDados">
 
+                <tbody id="tDados">
+                    <tr>
+                        <td>
+                            <div>01</div>
+                        </td>
+                        <td>
+                            <div>Anderson Luiz Antunes</div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button id="btnExcluir-" type="button" class="btn btn-info">Detalhes</button>
+                                <button id="btnInfo-" type="button" class="btn btn-danger">Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
+
                 <tfoot>
                 </tfoot>
             </table>
         </div>
     </div>
 
-<script src="script.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Modal de Informações -->
+    <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span id="modalUserName">Anderson Luiz Antunes</span> -
+                        <span id="modalUserId">01</span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="session-1">
+                        <p><strong>Rua:</strong> <span id="modalStreet">Luiz Matheus Mailasque</span></p>
+                        <p><strong>Número:</strong> <span id="modalHouseNumber">152</span></p>
+                    </div>
+                    <div class="session-2">
+                        <p><strong>Bairro:</strong> <span id="modalNeighborhood">Centro</span></p>
+                        <p><strong>Cidade:</strong> <span id="modalCity">Mairinque</span></p>
+                        <p><strong>CEP:</strong> <span id="modalZipCode">18120-000</span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
+
 </html>
