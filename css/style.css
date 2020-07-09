@@ -9,9 +9,17 @@
 */
 
 /*************************** GERAL ***************************/
-.action-buttons {
-  display: flex;
-  justify-content: space-evenly;
+.table td {
+  vertical-align: middle;
+}
+
+tbody tr {
+  border-right: 1px solid #454d55;
+  border-left: 1px solid #454d55;
+}
+
+.action-buttons button {
+  margin: 0 10px;
 }
 
 .session-1,
