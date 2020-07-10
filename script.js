@@ -21,7 +21,7 @@ const FormValidate = () => {
   if (codigo.value === "") {
     codigo.style.border = "3px solid red";
     codigoValida.innerHTML = "Favor preencher o nome.";
-  } else if (localStorage.hasOwnProperty(newCep)) {
+  } else if (localStorage.hasOwnProperty(codigo.value)) {
     codigo.style.border = "3px solid yellow";
     codigoValida.innerHTML = "Código já cadastrado";
   } else {
@@ -118,11 +118,90 @@ cep.addEventListener("keyup", (event) => {
   }
 });
 
+function gravar() {
+  let gravacao = {
+    codigo: codigo.value,
+    nome: nome.value,
+    cep: cep.value.replace("-", ""),
+    numero: numero.value
+    };
+    localStorage.setItem(codigo.value, JSON.stringify(gravacao));
+};
+
 btnEnviar.addEventListener("click", () => {
-  console.log("clicou");
   if (FormValidate()) {
-    console.log("valido");
+    gravar()
+    listar()
   }
 });
 
+function listar() {
+  let table = "";
+  let lista = JSON.parse(localStorage.getItem("23"));
+  table = `
+  <tr id="${lista.codigo}">
+  <td>
+      <div>${lista.codigo}</div>
+  </td>
+  <td>
+      <div>${lista.nome}</div>
+  </td>
+  <td>
+      <div class="action-buttons">
+          <button id="btnInfo_${lista.codigo}" type="button" class="btn btn-info">Detalhes</button>
+          <button id="btnExcluir_${lista.codigo}" type="button" class="btn btn-danger">Excluir</button>
+       </div>
+  </td>
+</tr>`
+  tDados.innerHTML = table;
+};
+
+function eventoExcluir() {
+  let btnExcluir = document.querySelectorAll(".btn-danger");
+  btnExcluir.forEach(btn => {
+    btn.addEventListener("click", (event) => {
+      let idArray = event.target.id;
+      let id = idArray.split("_");
+      excluir(id[1])
+    });
+  });
+};
+
+function excluir(codigo) {
+  localStorage.removeItem(codigo);
+  document.getElementById(codigo).remove();
+};
+
+function eventoExibir() {
+ let btnExibe = document.querySelectorAll(".btn-info");
+ btnExibe.forEach(btn => {
+  btn.addEventListener("click", (event) => {
+    let idArray = event.target.id;
+    let id = idArray.split("_");
+    exiba(id[1])
+  });
+ });
+};
+
+function exiba(codigo) {
+  document.getElementById("modalInfo").style.opacity = "1";
+  document.getElementById("modalInfo").style.display = "block";
+  let dados = JSON.parse(localStorage.getItem(codigo));
+  modalUserName.innerHTML = dados.nome;
+  modalUserId.innerHTML = dados.codigo;
+  modalStreet.innerHTML = dados.rua;
+  modalHouseNumber.innerHTML = dados.numero;
+  modalNeighborhood.innerHTML = dados.bairro;
+  modalCity.innerHTML = dados.cidade;
+  modalZipCode.innerHTML = dados.cep;
+};
+
+btnFechar.addEventListener("click", () => { 
+  document.getElementById("modalInfo").style.opacity = "0";
+  document.getElementById("modalInfo").style.display = "none";
+});
+
+listar();
+eventoExcluir();
+eventoExibir();
 AddInputFocusEvent();

@@ -77,20 +77,7 @@
                 </thead>
 
                 <tbody id="tDados">
-                    <tr>
-                        <td>
-                            <div>01</div>
-                        </td>
-                        <td>
-                            <div>Anderson Luiz Antunes</div>
-                        </td>
-                        <td>
-                            <div class="action-buttons">
-                                <button id="btnExcluir-" type="button" class="btn btn-info">Detalhes</button>
-                                <button id="btnInfo-" type="button" class="btn btn-danger">Excluir</button>
-                            </div>
-                        </td>
-                    </tr>
+
                 </tbody>
 
                 <tfoot>
@@ -100,13 +87,13 @@
     </div>
 
     <!-- Modal de Informações -->
-    <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        <span id="modalUserName">Anderson Luiz Antunes</span> -
-                        <span id="modalUserId">01</span>
+                        <span id="modalUserName"></span> -
+                        <span id="modalUserId"></span>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
@@ -114,17 +101,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="session-1">
-                        <p><strong>Rua:</strong> <span id="modalStreet">Luiz Matheus Mailasque</span></p>
-                        <p><strong>Número:</strong> <span id="modalHouseNumber">152</span></p>
+                        <p><strong>Rua:</strong> <span id="modalStreet"></span></p>
+                        <p><strong>Número:</strong> <span id="modalHouseNumber"></span></p>
                     </div>
                     <div class="session-2">
-                        <p><strong>Bairro:</strong> <span id="modalNeighborhood">Centro</span></p>
-                        <p><strong>Cidade:</strong> <span id="modalCity">Mairinque</span></p>
-                        <p><strong>CEP:</strong> <span id="modalZipCode">18120-000</span></p>
+                        <p><strong>Bairro:</strong> <span id="modalNeighborhood"></span></p>
+                        <p><strong>Cidade:</strong> <span id="modalCity"></span></p>
+                        <p><strong>CEP:</strong> <span id="modalZipCode"></span></p>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button id="btnFechar" type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
