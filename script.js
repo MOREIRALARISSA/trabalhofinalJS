@@ -115,40 +115,40 @@ cep.addEventListener("keyup", (event) => {
     } else {
       LoadCepViaCep(newCep);
     }
-  };
+  }
 });
 
 function gravar() {
   let arrayCadastro = [];
 
   if (localStorage.hasOwnProperty("cadastro")) {
-    arrayCadastro = JSON.parse(localStorage.getItem("cadastro"))
-  };
+    arrayCadastro = JSON.parse(localStorage.getItem("cadastro"));
+  }
 
   let gravacao = {
     codigo: codigo.value,
     nome: nome.value,
     cep: cep.value.replace("-", ""),
-    numero: numero.value
+    numero: numero.value,
   };
 
   arrayCadastro.push(gravacao);
 
   localStorage.setItem("cadastro", JSON.stringify(arrayCadastro));
-};
+}
 
 btnEnviar.addEventListener("click", () => {
   if (FormValidate()) {
-    gravar()
-    listar()
+    gravar();
+    listar();
   }
 });
 
 function listar() {
   let table = "";
   let lista = JSON.parse(localStorage.getItem("cadastro"));
-  lista.forEach(cadastro => {
-  table += `
+  lista.forEach((cadastro) => {
+    table += `
   <tr id="${cadastro.codigo}">
   <td>
       <div>${cadastro.codigo}</div>
@@ -162,43 +162,43 @@ function listar() {
           <button id="btnExcluir_${cadastro.codigo}" type="button" class="btn btn-danger">Excluir</button>
        </div>
   </td>
-  </tr>`
+  </tr>`;
   });
   tDados.innerHTML = table;
-};
+}
 
 window.addEventListener("load", () => {
   if (localStorage.hasOwnProperty("cadastro")) {
-      listar();
-  };
+    listar();
+  }
 });
 
 function eventoExcluir() {
   let btnExcluir = document.querySelectorAll(".btn-danger");
-  btnExcluir.forEach(btn => {
+  btnExcluir.forEach((btn) => {
     btn.addEventListener("click", (event) => {
       let idArray = event.target.id;
       let id = idArray.split("_");
-      excluir(id[1])
+      excluir(id[1]);
     });
   });
-};
+}
 
 function excluir(codigo) {
   localStorage.removeItem(codigo);
   document.getElementById(codigo).remove();
-};
+}
 
 function eventoExibir() {
- let btnExibe = document.querySelectorAll(".btn-info");
- btnExibe.forEach(btn => {
-  btn.addEventListener("click", (event) => {
-    let idArray = event.target.id;
-    let id = idArray.split("_");
-    exiba(id[1])
+  let btnExibe = document.querySelectorAll(".btn-info");
+  btnExibe.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      let idArray = event.target.id;
+      let id = idArray.split("_");
+      exiba(id[1]);
+    });
   });
- });
-};
+}
 
 function exiba(codigo) {
   document.getElementById("modalInfo").style.opacity = "1";
@@ -211,9 +211,9 @@ function exiba(codigo) {
   modalNeighborhood.innerHTML = dados.bairro;
   modalCity.innerHTML = dados.cidade;
   modalZipCode.innerHTML = dados.cep;
-};
+}
 
-btnFechar.addEventListener("click", () => { 
+btnFechar.addEventListener("click", () => {
   document.getElementById("modalInfo").style.opacity = "0";
   document.getElementById("modalInfo").style.display = "none";
 });
