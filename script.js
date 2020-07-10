@@ -115,17 +115,26 @@ cep.addEventListener("keyup", (event) => {
     } else {
       LoadCepViaCep(newCep);
     }
-  }
+  };
 });
 
 function gravar() {
+  let arrayCadastro = [];
+
+  if (localStorage.hasOwnProperty("cadastro")) {
+    arrayCadastro = JSON.parse(localStorage.getItem("cadastro"))
+  };
+
   let gravacao = {
     codigo: codigo.value,
     nome: nome.value,
     cep: cep.value.replace("-", ""),
     numero: numero.value
-    };
-    localStorage.setItem(codigo.value, JSON.stringify(gravacao));
+  };
+
+  arrayCadastro.push(gravacao);
+
+  localStorage.setItem("cadastro", JSON.stringify(arrayCadastro));
 };
 
 btnEnviar.addEventListener("click", () => {
@@ -137,24 +146,32 @@ btnEnviar.addEventListener("click", () => {
 
 function listar() {
   let table = "";
-  let lista = JSON.parse(localStorage.getItem("23"));
-  table = `
-  <tr id="${lista.codigo}">
+  let lista = JSON.parse(localStorage.getItem("cadastro"));
+  lista.forEach(cadastro => {
+  table += `
+  <tr id="${cadastro.codigo}">
   <td>
-      <div>${lista.codigo}</div>
+      <div>${cadastro.codigo}</div>
   </td>
   <td>
-      <div>${lista.nome}</div>
+      <div>${cadastro.nome}</div>
   </td>
   <td>
       <div class="action-buttons">
-          <button id="btnInfo_${lista.codigo}" type="button" class="btn btn-info">Detalhes</button>
-          <button id="btnExcluir_${lista.codigo}" type="button" class="btn btn-danger">Excluir</button>
+          <button id="btnInfo_${cadastro.codigo}" type="button" class="btn btn-info">Detalhes</button>
+          <button id="btnExcluir_${cadastro.codigo}" type="button" class="btn btn-danger">Excluir</button>
        </div>
   </td>
-</tr>`
+  </tr>`
+  });
   tDados.innerHTML = table;
 };
+
+window.addEventListener("load", () => {
+  if (localStorage.hasOwnProperty("cadastro")) {
+      listar();
+  };
+});
 
 function eventoExcluir() {
   let btnExcluir = document.querySelectorAll(".btn-danger");
@@ -201,7 +218,6 @@ btnFechar.addEventListener("click", () => {
   document.getElementById("modalInfo").style.display = "none";
 });
 
-listar();
 eventoExcluir();
 eventoExibir();
 AddInputFocusEvent();
