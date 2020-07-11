@@ -16,65 +16,79 @@ const AddInputFocusEvent = () => {
 };
 
 const FormValidate = () => {
-  let error = false;
+  let error = true;
+
+  let arrayCodigo = document.querySelectorAll("#tDados tr");
+  let arrayId = [];
+  arrayCodigo.forEach( codigo => {
+    arrayId.push(codigo.id)
+  });
 
   if (codigo.value === "") {
     codigo.style.border = "3px solid red";
     codigoValida.innerHTML = "Favor preencher o nome.";
-  } else if (localStorage.hasOwnProperty(codigo.value)) {
+    error = false;
+  } else if (arrayId.indexOf(codigo.value) > -1) {
     codigo.style.border = "3px solid yellow";
     codigoValida.innerHTML = "Código já cadastrado";
+    error = false;
   } else {
     codigo.style.borderColor = "unset";
-    error = true;
+    
   }
 
   if (nome.value === "") {
     nome.style.border = "3px solid red";
     nomeValida.innerHTML = "Favor preencher o nome.";
+    error = false;
   } else {
     nome.style.borderColor = "unset";
-    error = true;
+    
   }
 
   if (cep.value === "") {
     cep.style.border = "3px solid red";
     cepValida.innerHTML = "Favor preencher o CEP.";
+    error = false;
   } else {
     cep.style.borderColor = "unset";
-    error = true;
+    
   }
 
   if (rua.value === "") {
     rua.style.border = "3px solid red";
     ruaValida.innerHTML = "Favor preencher a rua.";
+    error = false;
   } else {
     rua.style.borderColor = "unset";
-    error = true;
+    
   }
 
   if (numero.value === "") {
     numero.style.border = "3px solid red";
     numeroValida.innerHTML = "Favor preencher o número.";
+    error = false;
   } else {
     numero.style.borderColor = "unset";
-    error = true;
+    
   }
 
   if (bairro.value === "") {
     bairro.style.border = "3px solid red";
     bairroValida.innerHTML = "Favor preencher o bairro.";
+    error = false;
   } else {
     bairro.style.borderColor = "unset";
-    error = true;
+    
   }
 
   if (cidade.value === "") {
     cidade.style.border = "3px solid red";
     cidadeValida.innerHTML = "Favor preencher a cidade.";
+    error = false;
   } else {
     cidade.style.borderColor = "unset";
-    error = true;
+    
   }
 
   return error;
@@ -165,11 +179,14 @@ function listar() {
   </tr>`;
   });
   tDados.innerHTML = table;
+  eventoExcluir();
+  eventoExibir();
 }
 
 window.addEventListener("load", () => {
   if (localStorage.hasOwnProperty("cadastro")) {
     listar();
+    
   }
 });
 
@@ -185,9 +202,14 @@ function eventoExcluir() {
 }
 
 function excluir(codigo) {
-  localStorage.removeItem(codigo);
+  let arrayObject = JSON.parse(localStorage.getItem('cadastro'));
+  let object = arrayObject.find(cadastro => cadastro.codigo == codigo);
+  let objectIndex = arrayObject.indexOf(object);
+  arrayObject.splice(objectIndex, 1);
+  localStorage.setItem('cadastro', JSON.stringify(arrayObject));
   document.getElementById(codigo).remove();
-}
+  
+};
 
 function eventoExibir() {
   let btnExibe = document.querySelectorAll(".btn-info");
@@ -203,13 +225,15 @@ function eventoExibir() {
 function exiba(codigo) {
   document.getElementById("modalInfo").style.opacity = "1";
   document.getElementById("modalInfo").style.display = "block";
-  let dados = JSON.parse(localStorage.getItem(codigo));
+  let object = JSON.parse(localStorage.getItem("cadastro"));
+  let dados = object.find(cadastro => cadastro.codigo == codigo)
+  let cep = JSON.parse(localStorage.getItem(dados.cep));
   modalUserName.innerHTML = dados.nome;
   modalUserId.innerHTML = dados.codigo;
-  modalStreet.innerHTML = dados.rua;
+  modalStreet.innerHTML = cep.logradouro;
   modalHouseNumber.innerHTML = dados.numero;
-  modalNeighborhood.innerHTML = dados.bairro;
-  modalCity.innerHTML = dados.cidade;
+  modalNeighborhood.innerHTML = cep.bairro;
+  modalCity.innerHTML = cep.localidade;
   modalZipCode.innerHTML = dados.cep;
 }
 
@@ -218,6 +242,5 @@ btnFechar.addEventListener("click", () => {
   document.getElementById("modalInfo").style.display = "none";
 });
 
-eventoExcluir();
-eventoExibir();
+
 AddInputFocusEvent();
