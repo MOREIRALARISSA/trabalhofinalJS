@@ -155,7 +155,8 @@ btnEnviar.addEventListener("click", () => {
   if (FormValidate()) {
     gravar();
     listar();
-  }
+    limpaForm()
+  };
 });
 
 function listar() {
@@ -186,8 +187,7 @@ function listar() {
 window.addEventListener("load", () => {
   if (localStorage.hasOwnProperty("cadastro")) {
     listar();
-    
-  }
+  };
 });
 
 function eventoExcluir() {
@@ -199,7 +199,7 @@ function eventoExcluir() {
       excluir(id[1]);
     });
   });
-}
+};
 
 function excluir(codigo) {
   let arrayObject = JSON.parse(localStorage.getItem('cadastro'));
@@ -220,7 +220,7 @@ function eventoExibir() {
       exiba(id[1]);
     });
   });
-}
+};
 
 function exiba(codigo) {
   document.getElementById("modalInfo").style.opacity = "1";
@@ -235,12 +235,20 @@ function exiba(codigo) {
   modalNeighborhood.innerHTML = cep.bairro;
   modalCity.innerHTML = cep.localidade;
   modalZipCode.innerHTML = dados.cep;
-}
+};
 
 btnFechar.addEventListener("click", () => {
   document.getElementById("modalInfo").style.opacity = "0";
   document.getElementById("modalInfo").style.display = "none";
 });
 
-
+function limpaForm() {
+  codigo.value = "";
+  nome.value = "";
+  cep.value = "";
+  rua.value = "";
+  numero.value = "";
+  bairro.value = "";
+  cidade.value = "";
+};
 AddInputFocusEvent();
